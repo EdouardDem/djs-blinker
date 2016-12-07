@@ -61,8 +61,6 @@ $(document).ready(function () {
 	}));
 	blinkers.push(new djs.Blinker($("#test-3"), {
 		class: 'djs-blink-2',
-		duration: 500,
-		count: 4,
 		css: {
 			borderColor: "coral"
 		}
