@@ -18,8 +18,8 @@ window.djs = window.djs || {};
  * Default options :
  * {
  * 		class: 'djs-blink', // null to disable
- * 		duration: 500, // semi-cycle
- * 		count: 4, // cycles count
+ * 		duration: 300, // semi-cycle
+ * 		count: 5, // cycles count
  * 		css: null // Example : { color: 'red', opacity: 0.5 }
  * }
  */
@@ -98,18 +98,18 @@ djs.Blinker.prototype.start = function(callback) {
 	for(var i=0; i<this.options.count; i++) {
 
 		// On timeouts
-		this.timeouts.push( setTimeout(function(){
+		this.timeouts.push(setTimeout(function(){
 			this._on();
 		}.bind(this), (2*i)*this.options.duration));
 
 			// Off timeouts
-		this.timeouts.push( setTimeout(function(){
+		this.timeouts.push(setTimeout(function(){
 			this._off();
 		}.bind(this), (2*i+1)*this.options.duration));
 	}
 
 	// Final timeout
-	this.timeouts.push( setTimeout(function() {
+	this.timeouts.push(setTimeout(function() {
 
 		// Call the stop method to clean up object
 		this.stop();
@@ -117,7 +117,7 @@ djs.Blinker.prototype.start = function(callback) {
 		// If a callback is defined, call it.
 		if (typeof callback == 'function') callback();
 
-	}.bind(this), (2*this.options.count+1)*this.options.duration));
+	}.bind(this), (2*this.options.count-1)*this.options.duration));
 
 
 	return this;
