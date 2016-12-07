@@ -41,6 +41,18 @@ If you want to stop before the end, call `stop`. The ending callback won't be ca
 blinker.stop();
 ```
 
+### Infinite blinking
+
+You can make the element blinking infinitely by calling the method `infinite`.
+
+```javascript
+// Start infinite blinking
+blinker.infinite();
+
+// Stop infinite blinking
+blinker.stop();
+```
+
 ### Custom options
 
 When creating a blinker, you can change some options.

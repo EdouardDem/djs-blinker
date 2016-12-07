@@ -26,13 +26,23 @@ var blinkers = [];
  * @param {Number} index
  */
 start = function(index) {
-	$('#start-'+index).addClass('hidden');
+	$('#start-'+index+', #infinite-'+index).addClass('hidden');
 	$('#stop-'+index).removeClass('hidden');
 	blinkers[index-1].start(function() {
 		displayLog("Did finish blinking for index "+index);
-		$('#start-'+index).removeClass('hidden');
+		$('#start-'+index+', #infinite-'+index).removeClass('hidden');
 		$('#stop-'+index).addClass('hidden');
 	});
+};
+/**
+ * Start a blinking effect
+ *
+ * @param {Number} index
+ */
+infinite = function(index) {
+	$('#start-'+index+', #infinite-'+index).addClass('hidden');
+	$('#stop-'+index).removeClass('hidden');
+	blinkers[index-1].infinite();
 };
 /**
  * Stop a blinking effect
@@ -41,7 +51,7 @@ start = function(index) {
  */
 stop = function(index) {
 	blinkers[index-1].stop();
-	$('#start-'+index).removeClass('hidden');
+	$('#start-'+index+', #infinite-'+index).removeClass('hidden');
 	$('#stop-'+index).addClass('hidden');
 };
 
