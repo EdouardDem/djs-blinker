@@ -1,0 +1,31 @@
+{
+  "name": "djs-blinker",
+  "description": "A JavaScript library to make blinking an element",
+  "main": [
+    "dist/djs-blinker.js",
+    "dist/djs-blinker.min.js"
+  ],
+  "authors": [
+    "Edouard Demotes-Mainard"
+  ],
+  "license": "https://opensource.org/licenses/BSD-2-Clause",
+  "keywords": [
+    "blink",
+    "css",
+    "property"
+  ],
+  "homepage": "https://github.com/EdouardDem/djs-blinker",
+  "moduleType": [
+    "globals"
+  ],
+  "dependencies": {
+    "jquery": "^2.0.0"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

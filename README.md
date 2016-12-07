@@ -1,2 +1,3 @@
 # djs-blinker
-A Javascript to to make blinking an element
+
+A JavaScript library to make blinking an element.
