@@ -22,6 +22,8 @@ window.djs = window.djs || {};
  * 		count: 5, // cycles count
  * 		css: null // Example : { color: 'red', opacity: 0.5 }
  * }
+ *
+ * @todo Add a function for infinite blinking
  */
 djs.Blinker = function ($element, options) {
 
