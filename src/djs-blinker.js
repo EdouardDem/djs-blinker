@@ -100,7 +100,7 @@ djs.Blinker.prototype._clearTimeouts = function() {
 	return this;
 };
 /**
- * Cleanup all timeouts
+ * Cleanup interval
  *
  * @private
  * @return {Object}
