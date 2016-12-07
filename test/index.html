@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="../src/djs-blinker.js"></script>
+        <script type="text/javascript" src="simple.js"></script>
+        <style>
+            .cnt,
+            .results {
+                max-width: 1000px;
+                background: #eee;
+                margin: auto;
+                padding: 20px;
+                box-sizing: border-box;
+                border: 1px solid #aaa;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .clearfix {
+                clear: both;
+            }
+            .hidden {
+                display: none;
+            }
+            .test-cnt {
+                float: left;
+                width: 260px;
+                padding: 20px;
+            }
+            .test-cnt .inr {
+                width: 100%;
+                height:60px;
+                background: #ccc;
+            }
+            .test-cnt + .test-cnt {
+                margin-left: 20px;
+            }
+            .djs-blink {
+                border: 3px solid coral;
+                margin: -3px;
+            }
+            .djs-blink-2 {
+                border: 5px solid;
+                margin: -5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="cnt">
+
+            <div class="test-cnt">
+                <p class="title">Add CSS class (default settings)</p>
+                <div class="inr" id="test-1"></div>
+                <p>
+                    <button id="start-1" onclick="start(1);">Start</button>
+                    <button id="stop-1" class="hidden" onclick="stop(1);">Stop</button>
+                </p>
+            </div>
+
+            <div class="test-cnt">
+                <p class="title">Add CSS properties</p>
+                <div class="inr" id="test-2"></div>
+                <p>
+                    <button id="start-2" onclick="start(2);">Start</button>
+                    <button id="stop-2" class="hidden" onclick="stop(2);">Stop</button>
+                </p>
+            </div>
+
+            <div class="test-cnt">
+                <p class="title">Add CSS class and CSS properties</p>
+                <div class="inr" id="test-3"></div>
+                <p>
+                    <button id="start-3" onclick="start(3);">Start</button>
+                    <button id="stop-3" class="hidden" onclick="stop(3);">Stop</button>
+                </p>
+            </div>
+
+            <div class="clearfix"></div>
+
+        </div>
+
+        <div class="results">
+
+        </div>
+    </body>
+</html>
