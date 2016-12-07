@@ -22,8 +22,6 @@ window.djs = window.djs || {};
  * 		count: 5, // cycles count
  * 		css: null // Example : { color: 'red', opacity: 0.5 }
  * }
- *
- * @todo Add a function for infinite blinking
  */
 djs.Blinker = function ($element, options) {
 
@@ -39,6 +37,7 @@ djs.Blinker = function ($element, options) {
 	this.$element = $element;
 	this.options = $.extend(defaultOptions, options);
 	this.timeouts = [];
+	this.interval = null;
 };
 /**
  * Set the 'on' state
@@ -86,6 +85,34 @@ djs.Blinker.prototype._off = function() {
 	return this;
 };
 /**
+ * Cleanup all timeouts
+ *
+ * @private
+ * @return {Object}
+ */
+djs.Blinker.prototype._clearTimeouts = function() {
+	// Clear all timeouts
+	this.timeouts.map(function(timeout){
+		clearTimeout(timeout);
+	});
+	this.timeouts = [];
+
+	return this;
+};
+/**
+ * Cleanup interval
+ *
+ * @private
+ * @return {Object}
+ */
+djs.Blinker.prototype._clearInterval = function() {
+	// Clear interval
+	clearInterval(this.interval);
+	this.interval = null;
+
+	return this;
+};
+/**
  * Start the animation
  *
  * @param {Function} callback (optional)
@@ -125,17 +152,51 @@ djs.Blinker.prototype.start = function(callback) {
 	return this;
 };
 /**
+ * Start the animation and never end
+ *
+ * @return {Object}
+ */
+djs.Blinker.prototype.infinite = function() {
+
+	// Stop a pending animation
+	this.stop();
+
+	// Define the blink function
+	var blink = function() {
+
+		// Clear timeout
+		this._clearTimeouts();
+
+		// Cleanup previous
+		this._on();
+
+		// Delay the off
+		this.timeouts.push(setTimeout(function(){
+			this._off();
+		}.bind(this), this.options.duration));
+
+	}.bind(this);
+
+	// Set an interval for each cycle
+	this.interval = setInterval(blink, this.options.duration * 2);
+
+	// Blink immediately
+	blink();
+
+	return this;
+};
+/**
  * Stop the animation
  *
  * @return {Object}
  */
 djs.Blinker.prototype.stop = function() {
 
-	// Clear all timeouts
-	this.timeouts.map(function(timeout){
-		clearTimeout(timeout);
-	});
-	this.timeouts = [];
+	// Clear timeouts
+	this._clearTimeouts();
+
+	// Clear interval
+	this._clearInterval();
 
 	// Remove classes and properties
 	this._off();
